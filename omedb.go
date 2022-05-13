@@ -51,7 +51,7 @@ func AddSubscription (subscription webpush.Subscription) error {
 func GetSubscriptions () []webpush.Subscription {
 	var subscriptions []webpush.Subscription
 
-	db, err := bolt.Open(getDbPath(), 0400, nil)
+	db, err := bolt.Open(getDbPath(), 0600, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
