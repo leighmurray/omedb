@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"encoding/binary"
 	"os"
+	"path/filepath"
 
 	bolt "go.etcd.io/bbolt"
 	webpush "github.com/SherClockHolmes/webpush-go"
@@ -12,12 +13,14 @@ import (
 
 
 func getDbPath () string {
-	dbPath, err := os.Getwd()
 
+	ex, err := os.Executable()
 	if err != nil {
-		log.Println(err)
+		panic(err)
 	}
-	return dbPath + "/ome.db"
+	exPath := filepath.Dir(ex)
+
+	return exPath + "/ome.db"
 }
 
 func itob(v int) []byte {
