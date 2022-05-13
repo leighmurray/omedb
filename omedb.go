@@ -4,12 +4,20 @@ import (
 	"log"
 	"encoding/json"
 	"encoding/binary"
+	"os"
 
 	bolt "go.etcd.io/bbolt"
 	webpush "github.com/SherClockHolmes/webpush-go"
 )
 
-const dbPath = "../ome.db"
+
+dbPath, err := os.Getwd()
+
+if err != nil {
+    log.Println(err)
+}
+
+const dbPath = dbPath + "/ome.db"
 
 func itob(v int) []byte {
     b := make([]byte, 8)
