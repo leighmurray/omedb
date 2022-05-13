@@ -11,13 +11,14 @@ import (
 )
 
 
-dbPath, err := os.Getwd()
+func getDbPath () string {
+	dbPath, err := os.Getwd()
 
-if err != nil {
-    log.Println(err)
+	if err != nil {
+		log.Println(err)
+	}
+	return dbPath + "/ome.db"
 }
-
-const dbPath = dbPath + "/ome.db"
 
 func itob(v int) []byte {
     b := make([]byte, 8)
@@ -26,7 +27,7 @@ func itob(v int) []byte {
 }
 
 func AddSubscription (subscription webpush.Subscription) error {
-	db, err := bolt.Open(dbPath, 0600, nil)
+	db, err := bolt.Open(getDbPath(), 0600, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -47,7 +48,7 @@ func AddSubscription (subscription webpush.Subscription) error {
 func GetSubscriptions () []webpush.Subscription {
 	var subscriptions []webpush.Subscription
 
-	db, err := bolt.Open(dbPath, 0400, nil)
+	db, err := bolt.Open(getDbPath(), 0400, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
