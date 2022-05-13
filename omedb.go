@@ -11,15 +11,6 @@ import (
 
 const dbPath = "../ome.db"
 
-
-//func main () {
-//	s := &webpush.Subscription{}
-//      json.Unmarshal([]byte(tempSubscription), s)
-//	addSubscription(*s)
-//	allSubscriptions := getSubscriptions()
-//	fmt.Println(allSubscriptions)
-//}
-
 func itob(v int) []byte {
     b := make([]byte, 8)
     binary.BigEndian.PutUint64(b, uint64(v))
@@ -48,7 +39,7 @@ func AddSubscription (subscription webpush.Subscription) error {
 func GetSubscriptions () []webpush.Subscription {
 	var subscriptions []webpush.Subscription
 
-	db, err := bolt.Open(dbPath, 0600, nil)
+	db, err := bolt.Open(dbPath, 0400, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
