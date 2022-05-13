@@ -26,7 +26,7 @@ func itob(v int) []byte {
     return b
 }
 
-func addSubscription (subscription webpush.Subscription) error {
+func AddSubscription (subscription webpush.Subscription) error {
 	db, err := bolt.Open(dbPath, 0600, nil)
 	if err != nil {
 		log.Fatal(err)
@@ -45,7 +45,7 @@ func addSubscription (subscription webpush.Subscription) error {
 	})
 }
 
-func getSubscriptions () []webpush.Subscription {
+func GetSubscriptions () []webpush.Subscription {
 	var subscriptions []webpush.Subscription
 
 	db, err := bolt.Open(dbPath, 0600, nil)
