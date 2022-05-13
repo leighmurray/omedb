@@ -1,4 +1,4 @@
-module omedb
+module github.com/leighmurray/omedb
 
 go 1.18
 
