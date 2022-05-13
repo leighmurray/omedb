@@ -20,7 +20,7 @@ func getDbPath () string {
 	}
 	exPath := filepath.Dir(ex)
 
-	return exPath + "/ome.db"
+	return exPath + "/../ome.db"
 }
 
 func itob(v int) []byte {
