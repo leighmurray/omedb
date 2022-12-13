@@ -14,13 +14,7 @@ import (
 
 func getDbPath () string {
 
-	ex, err := os.Executable()
-	if err != nil {
-		panic(err)
-	}
-	exPath := filepath.Dir(ex)
-
-	return exPath + "/../ome.db"
+	return "/data/ome.db"
 }
 
 func itob(v int) []byte {
