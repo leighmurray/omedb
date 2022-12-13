@@ -4,8 +4,6 @@ import (
 	"log"
 	"encoding/json"
 	"encoding/binary"
-	"os"
-	"path/filepath"
 
 	bolt "go.etcd.io/bbolt"
 	webpush "github.com/SherClockHolmes/webpush-go"
